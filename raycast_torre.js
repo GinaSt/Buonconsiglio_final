@@ -62,47 +62,47 @@ function onDocumentMouseDown( event )
 
 		if (intersects[ 0 ].object.userData.name=="Jan")
 			{linkText="<p><h2>January</h2> \
-		<img src=\"../img/aquila_frescoes/gennaio.jpg\" alt=\"January\" > \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/gennaio.jpg\" alt=\"January\" > \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Feb")
 			{linkText="<p><h2>February</h2> \
-		<img src=\"../img/aquila_frescoes/febbraio.jpg\" alt=\"February\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/febbraio.jpg\" alt=\"February\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Apr")
 			{linkText="<p><h2>April</h2> \
-		<img src=\"../img/aquila_frescoes/aprile.jpg\" alt=\"April\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/aprile.jpg\" alt=\"April\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="May")
 			{linkText="<p><h2>May</h2> \
-		<img src=\"../img/aquila_frescoes/maggio.jpg\" alt=\"May\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/maggio.jpg\" alt=\"May\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Jun")
 			{linkText="<p><h2>June</h2> \
-		<img src=\"../img/aquila_frescoes/giugno.jpg\" alt=\"June\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/giugno.jpg\" alt=\"June\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Jul")
 			{linkText="<p><h2>July</h2> \
-		<img src=\"../img/aquila_frescoes/luglio.jpg\" alt=\"July\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/luglio.jpg\" alt=\"July\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Aug")
 			{linkText="<p><h2>August</h2> \
-		<img src=\"../img/aquila_frescoes/agosto.jpg\" alt=\"August\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/agosto.jpg\" alt=\"August\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Sep")
 			{linkText="<p><h2>September</h2> \
-		<img src=\"../img/aquila_frescoes/settembre.jpg\" alt=\"September\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/settembre.jpg\" alt=\"September\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Oct")
 			{linkText="<p><h2>October</h2> \
-		<img src=\"../img/aquila_frescoes/ottobre.jpg\" alt=\"October\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/ottobre.jpg\" alt=\"October\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Nov")
 			{linkText="<p><h2>November</h2> \
-		<img src=\"../img/aquila_frescoes/novembre.jpg\" alt=\"November\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/novembre.jpg\" alt=\"November\"> \
 		</p>"}
 		if (intersects[ 0 ].object.userData.name=="Dec")
 			{linkText="<p><h2>December</h2> \
-		<img src=\"../img/aquila_frescoes/dicembre.jpg\" alt=\"December\"> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/dicembre.jpg\" alt=\"December\"> \
 		</p>"}
 
 	
@@ -148,8 +148,12 @@ function onMouseMove( event ) {
 	var scroll = $('body').scrollTop();
 	var top = $('#potree_render_area').offset().top;
 	var left = $('#potree_render_area').offset().left;
+
+
 	// calculate mouse position in normalized device coordinates
-	var mouse = { x : 0 , y : 0 };
+
+	if (event.clientX-left>0 && event.clientY-top+scroll>0 && event.clientX < $('#potree_render_area').width()+left && event.clientY < $('#potree_render_area').height()+top - scroll)
+	{var mouse = { x : 0 , y : 0 };
 	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
 	mouse.y = - ((event.clientY-top+scroll)/ $('#potree_render_area').height() ) * 2 + 1;
 
@@ -185,9 +189,82 @@ function onMouseMove( event ) {
 	else {
 		//turn off all the planes when not hovered over
 		planes.children.forEach(function( plane ) {plane.visible=false;});
-		}
+		}}
+	else{
+		planes.children.forEach(function( plane ) {plane.visible=false;});
+	}
+
+
 
 	// Make the POIs rotate towards the camera when moving  ---> If deactivated the rotation of the ROIs must be set in torre.html
 	hotspots.children.forEach(function( hotspot ) {hotspot.lookAt(camera.position);});
 
+
 }
+
+
+$('.dropdown-menu li a').click(function() {
+
+
+
+
+		if ($(this).text()=="Stanza")
+			{linkText="<p><h2>Description</h2> \
+				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p> \
+				        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p> \
+				        <p>Le scene, ricchissime di particolari tratti dall'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p> \
+				        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l'apice dell'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p> \
+				       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p> \
+				       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p> \
+				       <br> \
+				       <p><h5><em>Fonte wikipedia.org</em></h5></p> \
+				        </p> "}
+
+    	if ($(this).text()=="Gennaio")
+			{linkText="<p><h2>January</h2> \
+		<img  class=\"month_img\" src=\"../img/aquila_frescoes/gennaio.jpg\" alt=\"January\" > \
+		</p>"}
+		if ($(this).text()=="Febbraio ")
+			{linkText="<p><h2>February</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/febbraio.jpg\" alt=\"February\"> \
+		</p>"}
+		if ($(this).text()=="Aprile")
+			{linkText="<p><h2>April</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/aprile.jpg\" alt=\"April\"> \
+		</p>"}
+		if ($(this).text()=="Maggio")
+			{linkText="<p><h2>May</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/maggio.jpg\" alt=\"May\"> \
+		</p>"}
+		if ($(this).text()=="Giugno")
+			{linkText="<p><h2>June</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/giugno.jpg\" alt=\"June\"> \
+		</p>"}
+		if ($(this).text()=="Luglio")
+			{linkText="<p><h2>July</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/luglio.jpg\" alt=\"July\"> \
+		</p>"}
+		if ($(this).text()=="Agosto")
+			{linkText="<p><h2>August</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/agosto.jpg\" alt=\"August\"> \
+		</p>"}
+		if ($(this).text()=="Settembre")
+			{linkText="<p><h2>September</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/settembre.jpg\" alt=\"September\"> \
+		</p>"}
+		if ($(this).text()=="Ottobre")
+			{linkText="<p><h2>October</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/ottobre.jpg\" alt=\"October\"> \
+		</p>"}
+		if ($(this).text()=="Novembre")
+			{linkText="<p><h2>November</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/novembre.jpg\" alt=\"November\"> \
+		</p>"}
+		if ($(this).text()=="Dicembre")
+			{linkText="<p><h2>December</h2> \
+		<img class=\"month_img\" src=\"../img/aquila_frescoes/dicembre.jpg\" alt=\"December\"> \
+		</p>"}
+
+
+		$('#descrizione').html(linkText);
+});
