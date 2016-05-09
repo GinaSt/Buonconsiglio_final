@@ -76,3 +76,13 @@ body { padding-top: 70px; }
 	margin-top: 3em;
 	margin-bottom: 3em;
 }
+
+#descrizione {
+	height:800px;
+}
+
+img {
+	max-height: 90%;
+    max-width: 100%;
+
+}
