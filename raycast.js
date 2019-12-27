@@ -1,9 +1,6 @@
 
 var raycaster = new THREE.Raycaster();
 
-
-
-
 function onDocumentMouseDown( event )
 {   //event.preventDefault();
 	//https://it.wikipedia.org/wiki/Torre_Aquila
@@ -34,7 +31,7 @@ function onDocumentMouseDown( event )
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		console.log("Hit right @ " + toString( intersects[0].point ) );
+		//console.log("Hit right @ " + toString( intersects[0].point ) );
 		window.open("../web_pages/torre.html")
 		// change the color of the closest face.
 		//intersects[0].object.callback();

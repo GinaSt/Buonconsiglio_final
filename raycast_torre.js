@@ -203,11 +203,13 @@ function onMouseMove( event ) {
 
 }
 
+	
+
 
 $('.dropdown-menu li a').click(function() {
 
-
-
+		event.stopPropagation();
+		
 
 		if ($(this).text()=="Stanza")
 			{linkText="<p><h3>Description</h3> \
@@ -268,4 +270,6 @@ $('.dropdown-menu li a').click(function() {
 
 
 		$('#descrizione').html(linkText);
+
+
 });
